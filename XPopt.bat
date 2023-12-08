@@ -77,6 +77,23 @@ if /i "%answer8%"=="y" (
 ) else (
     echo Disabling Performance Logs and Alertss has been canceled.                        X                      
 )
+set /p answer9=Do you want to delite built-in games? (y/n):
+if /i "%answer9%"=="y" (
+    del /Q "C:\Program Files (x86)\MSN Gaming Zone\Windows\*.*"
+    del /Q "C:\Documents and Settings\All Users\Start Menu\Programs\Games\*"
+    rmdir /Q /S "C:\Documents and Settings\All Users\Start Menu\Programs\Games"
+    echo built-in games has been successfully delite.        V
+) else (
+    echo deliting built-in games has been canceled.                        X                      
+)
+set /p answer10=Do you want to delite Windows update in start menu? (y/n):
+if /i "%answer10%"=="y" (
+       reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoWindowsUpdate /t REG_DWORD /d 1 /f
+       reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoSMHelp /t REG_DWORD /d 1 /f
+    echo Windows update has been successfully delite.        V
+) else (
+    echo deliting Windows update has been canceled.                        X                      
+)
 cls
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 pause
