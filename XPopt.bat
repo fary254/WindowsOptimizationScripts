@@ -56,6 +56,13 @@ if /i "%answer5%"=="y" (
 ) else (
     echo Disabling Remote registry has been canceled.                        X                      
 )
+set /p answer6=Do you want to disable Error Logging Service? (y/n):
+if /i "%answer6%"=="y" (
+    sc config RemoteRegistry start= disabled
+    echo Error Logging Service has been successfully disabled.        V
+) else (
+    echo Disabling Error Logging Service has been canceled.                        X                      
+)
 cls
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 pause
