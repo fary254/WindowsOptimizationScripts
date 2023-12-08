@@ -4,9 +4,7 @@ set /p answer=Do you want to remove the Telnet service? (y/n):
 :: Если пользователь ввел "y", тогда служба будет отключена.
 if /i "%answer%"=="y" (
     sc config TlntSrv start= disabled
-    color a
     echo The Telnet service has been successfully disabled.                  V
-    color 7
 ) else (
     echo Disabling the Telnet service has been canceled.                      X
 )
@@ -25,14 +23,6 @@ if /i "%answer1%"=="y" (
     echo The Remote Desktop Help Session Manager services has been successfully disabled.        V
 ) else (
     echo Disabling the Remote Desktop Help Session Manager services service has been canceled.    X
-)
-::answer2
-set /p answer2=Do you want to disable Smart cards? (y/n):
-if /i "%answer2%"=="y" (
-    sc config helpsvc start= disabled
-    echo Smart cards has been successfully disabled.                         V
-) else (
-    echo Disabling Smart cards has been canceled.                            X
 )
 ::answer
 set /p answer3=Do you want to disable Task Manager(Планировщик задач)? (y/n):
@@ -58,7 +48,7 @@ if /i "%answer5%"=="y" (
 )
 set /p answer6=Do you want to disable Error Logging Service? (y/n):
 if /i "%answer6%"=="y" (
-    sc config RemoteRegistry start= disabled
+    sc config ERSvc start= disabled
     echo Error Logging Service has been successfully disabled.        V
 ) else (
     echo Disabling Error Logging Service has been canceled.                        X                      
@@ -90,10 +80,25 @@ set /p answer10=Do you want to delite Windows update in start menu? (y/n):
 if /i "%answer10%"=="y" (
        reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoWindowsUpdate /t REG_DWORD /d 1 /f
        reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoSMHelp /t REG_DWORD /d 1 /f
+       del "C:\Documents and Settings\All Users\Start Menu\Windows Update"
     echo Windows update has been successfully delite.        V
 ) else (
     echo deliting Windows update has been canceled.                        X                      
 )
+set /p answer11=Do you want to delite Introducing Windows XP? (y/n):
+if /i "%answer11%"=="y" (
+    del /Q "C:\WINDOWS\system32\tourstart.exe"
+    echo Introducing Windows XP has been successfully delite.        V
+) else (
+    echo deliting Windows update has been canceled.                        X                      
+)
+set /p answer12=Do you want to delite Hyper Terminal(telnet termenla)? (y/n):
+if /i "%answer12%"=="y" (
+    ::delete exe
+    del /Q "C:\Program Files\Windows NT\hypertrm.exe"
+    echo hyper termenal has been successfully delite.        V
+) else (
+    echo deliting Windows update has been canceled.                        X                      
+)
 cls
-RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 pause
