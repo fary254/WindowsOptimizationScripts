@@ -63,6 +63,20 @@ if /i "%answer6%"=="y" (
 ) else (
     echo Disabling Error Logging Service has been canceled.                        X                      
 )
+set /p answer7=Do you want to disable Messaging service? (y/n):
+if /i "%answer7%"=="y" (
+    sc config Messenger start= disabled
+    echo Messaging service has been successfully disabled.        V
+) else (
+    echo Disabling Messaging service has been canceled.                        X                      
+)
+set /p answer8=Do you want to disable Performance Logs and Alerts? (y/n):
+if /i "%answer8%"=="y" (
+    sc config SysmonLog start= disabled
+    echo Performance Logs and Alerts has been successfully disabled.        V
+) else (
+    echo Disabling Performance Logs and Alertss has been canceled.                        X                      
+)
 cls
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 pause
