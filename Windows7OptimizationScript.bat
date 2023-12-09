@@ -23,18 +23,27 @@ if /i "%answer1%"=="y" (
 ) else (
     echo deleting the Help files has been canceled.                      X
 )
-set /p answer1=Do you want to remove folder Windows.old? (y/n):
-if /i "%answer1%"=="y" (
+set /p answer2=Do you want to remove folder Windows.old? (y/n):
+if /i "%answer2%"=="y" (
     cls
     dir C:\Windows.old
     tree C:\Windows.old
     rmdir /s /q C:\Windows.old
     del  C:\Windows.old
-    cls
     echo successfully                                  V
 ) else (
     echo deleting the Windows.old has been canceled.                      X
 )
 cls
-color 7
-shutdown /r
+set /p answer2=Do you want to turn off desktop graphic effects? (y/n):
+if /i "%answer2%"=="y" (
+    REG ADD "HKCU\Control Panel\Desktop\WindowMetrics" /v MinAnimate /t REG_SZ /d 0 /f
+    echo Выставление производительности графики
+    REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v VisualFXSetting /t REG_DWORD /d 2 /f
+    cls
+    echo successfully                                  V
+) else (
+    echo turning off desktop graphic effects has been canceled.                      X
+)
+cls
+shutdown /r /t 0
