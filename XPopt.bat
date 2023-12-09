@@ -69,9 +69,9 @@ if /i "%answer8%"=="y" (
 )
 set /p answer9=Do you want to delite built-in games? (y/n):
 if /i "%answer9%"=="y" (
-    del /Q "C:\Program Files (x86)\MSN Gaming Zone\Windows\*.*"
-    del /Q "C:\Documents and Settings\All Users\Start Menu\Programs\Games\*"
-    rmdir /Q /S "C:\Documents and Settings\All Users\Start Menu\Programs\Games"
+    del /Q "%SystemRoot%\Program Files (x86)\MSN Gaming Zone\Windows\*.*"
+    del /Q "%SystemRoot%\Documents and Settings\All Users\Start Menu\Programs\Games\*"
+    rmdir /Q /S "%SystemRoot%\Documents and Settings\All Users\Start Menu\Programs\Games"
     echo built-in games has been successfully delite.        V
 ) else (
     echo deliting built-in games has been canceled.                        X                      
@@ -80,14 +80,14 @@ set /p answer10=Do you want to delite Windows update in start menu? (y/n):
 if /i "%answer10%"=="y" (
        reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoWindowsUpdate /t REG_DWORD /d 1 /f
        reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoSMHelp /t REG_DWORD /d 1 /f
-       del "C:\Documents and Settings\All Users\Start Menu\Windows Update"
+       del "%SystemRoot%\Documents and Settings\All Users\Start Menu\Windows Update"
     echo Windows update has been successfully delite.        V
 ) else (
     echo deliting Windows update has been canceled.                        X                      
 )
 set /p answer11=Do you want to delite Introducing Windows XP? (y/n):
 if /i "%answer11%"=="y" (
-    del /Q "C:\WINDOWS\system32\tourstart.exe"
+    del /Q "%SystemRoot%\WINDOWS\system32\tourstart.exe"
     echo Introducing Windows XP has been successfully delite.        V
 ) else (
     echo deliting Windows update has been canceled.                        X                      
@@ -95,7 +95,7 @@ if /i "%answer11%"=="y" (
 set /p answer12=Do you want to delite Hyper Terminal(telnet termenal)? (y/n):
 if /i "%answer12%"=="y" (
     ::delete exe
-    del /Q "C:\Program Files\Windows NT\hypertrm.exe"
+    del /Q "%SystemRoot%\Program Files\Windows NT\hypertrm.exe"
     echo hyper termenal has been successfully delite.        V
 ) else (
     echo deliting Windows update has been canceled.                        X                      
@@ -107,6 +107,15 @@ if /i "%answer13%"=="y" (
 ) else (
     echo Seting Classic theme has been canceled.                        X                      
 )
+set /p answer14=Do you want to remove help files? (y/n):
+if /i "%answer14%"=="y" (
+        del "%SystemRoot%\Help\*.*"
+
+    echo Help files has been successfully remove.        V
+) else (
+    echo Help files removing has been canceled.                        X                      
+)
+
 cls
 shutdown /r
 
