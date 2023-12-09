@@ -92,7 +92,7 @@ if /i "%answer11%"=="y" (
 ) else (
     echo deliting Windows update has been canceled.                        X                      
 )
-set /p answer12=Do you want to delite Hyper Terminal(telnet termenla)? (y/n):
+set /p answer12=Do you want to delite Hyper Terminal(telnet termenal)? (y/n):
 if /i "%answer12%"=="y" (
     ::delete exe
     del /Q "C:\Program Files\Windows NT\hypertrm.exe"
@@ -100,5 +100,14 @@ if /i "%answer12%"=="y" (
 ) else (
     echo deliting Windows update has been canceled.                        X                      
 )
+set /p answer13=Do you want to set classic theme? (y/n):
+if /i "%answer13%"=="y" (
+       rundll32.exe shell32.dll,Control_RunDLL desk.cpl desk,@Themes /Action:OpenTheme /file:"C:\Windows\Resources\Themes\Windows Classic.theme"
+    echo Classic theme has been successfully set.        V
+) else (
+    echo Seting Classic theme has been canceled.                        X                      
+)
 cls
-pause
+shutdown /r
+
+
