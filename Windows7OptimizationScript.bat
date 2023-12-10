@@ -35,15 +35,16 @@ if /i "%answer2%"=="y" (
     echo deleting the Windows.old has been canceled.                      X
 )
 cls
-set /p answer2=Do you want to turn off desktop graphic effects? (y/n):
-if /i "%answer2%"=="y" (
+set /p answer3=Do you want to turn off desktop graphic effects? (y/n):
+if /i "%answer3%"=="y" (
     REG ADD "HKCU\Control Panel\Desktop\WindowMetrics" /v MinAnimate /t REG_SZ /d 0 /f
     echo Выставление производительности графики
     REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v VisualFXSetting /t REG_DWORD /d 2 /f
     cls
-    echo successfully                                  V
+    echo Successfully                                  V
 ) else (
     echo turning off desktop graphic effects has been canceled.                      X
 )
 cls
-shutdown /r /t 0
+echo
+shutdown /r /t 3

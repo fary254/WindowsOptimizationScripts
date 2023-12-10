@@ -115,8 +115,5 @@ if /i "%answer14%"=="y" (
 ) else (
     echo Help files removing has been canceled.                        X                      
 )
-
 cls
 shutdown /r
-
-
