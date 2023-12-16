@@ -6,14 +6,14 @@ if /i "%answer%"=="y" (
     sc config TlntSrv start= disabled
     echo The Telnet service has been successfully disabled.                  V
 ) else (
-    echo Disabling the Telnet service has been canceled.                      X
+    echo canceled.                      X
 )
 set /p answer0=Do you want to remove Widnows Media Center? (y/n):
 if /i "%answer0%"=="y" (
     dism /online /disable-feature /featurename:MediaCenter
     echo The Windows Media Center has been successfully Delite.                  V
 ) else (
-    echo deleting the Windows Media Center has been canceled.                      X
+    echo canceled.                      X
 )
 set /p answer1=Do you want to remove HELP FILES? (y/n):
 if /i "%answer1%"=="y" (
@@ -21,7 +21,7 @@ if /i "%answer1%"=="y" (
     rmdir /S /Q C:\Windows\Help
     echo The Help files has been successfully Delite.                  V
 ) else (
-    echo deleting the Help files has been canceled.                      X
+    echo canceled.                      X
 )
 set /p answer2=Do you want to remove folder Windows.old? (y/n):
 if /i "%answer2%"=="y" (
@@ -32,7 +32,7 @@ if /i "%answer2%"=="y" (
     del  C:\Windows.old
     echo successfully                                  V
 ) else (
-    echo deleting the Windows.old has been canceled.                      X
+    echo canceled.                      X
 )
 cls
 set /p answer3=Do you want to turn off desktop graphic effects? (y/n):
@@ -43,7 +43,15 @@ if /i "%answer3%"=="y" (
     cls
     echo Successfully                                  V
 ) else (
-    echo turning off desktop graphic effects has been canceled.                      X
+    echo canceled.                      X
+)
+set /p answer4=Do you want to delete ALL lof files in C:\ disk? (y/n):
+if /i "%answer4%"=="y" (
+    del /s /q C:\*.log
+    cls
+    echo Successfully                                  V
+) else (
+    echo canceled.                      X
 )
 cls
 echo
