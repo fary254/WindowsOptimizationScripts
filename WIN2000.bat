@@ -15,6 +15,7 @@ if /i "%answer0%"=="y" (
     del C:\WINNT\Help\*.*
     del C:\WINNT\system32\*.hlp
     del C:\*.hlp
+    del C:\WINNT\Speech\speech.hlp
     echo successfully                 V
 ) else (
     echo deleting help system and help files has been canceled.                      X
@@ -25,7 +26,8 @@ if /i "%answer1%"=="y" (
     del C:\WINNT\*.log
     del C:\*.log
     del C:\WINNT\setuplog.txt
-    echo successfully                 V
+    echo successfully          
+    del C:\WINNT\security\logs\*.log       V
 ) else (
     echo deleting help system and help files has been canceled.                      X
 )
